@@ -12,9 +12,11 @@ public class main {
             System.out.println(text);
 
             String phoneRegex = "(\\+?\\d{1,3}[-.\\s]?)?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{2}[-.\\s]?\\d{2}";
+            String nameRegex = "(?<![.!?]\\s)[A-ZА-ЯЁ][a-zа-яё]+(?:\\s+[A-ZА-ЯЁ][a-zа-яё]+)?";
 
             String censoredText = text.replaceAll(phoneRegex, "[censored]");
-
+            censoredText = censoredText.replaceAll(nameRegex, "[censored]");
+            
             System.out.println("\n--- Очищенный текст ---");
             System.out.println(censoredText);
         } catch (IOException e) {
