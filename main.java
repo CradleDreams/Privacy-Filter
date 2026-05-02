@@ -13,9 +13,11 @@ public class main {
 
             String phoneRegex = "(\\+?\\d{1,3}[-.\\s]?)?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{2}[-.\\s]?\\d{2}";
             String nameRegex = "(?<![.!?]\\s)[A-ZА-ЯЁ][a-zа-яё]+(?:\\s+[A-ZА-ЯЁ][a-zа-яё]+)?";
+            String geoRegex = "(г\\.|город|ул\\.|улица|д\\.|дом|кв\\.|квартира)\\s+[A-ZА-ЯЁa-zа-яё0-9-]+";
 
             String censoredText = text.replaceAll(phoneRegex, "[censored]");
             censoredText = censoredText.replaceAll(nameRegex, "[censored]");
+            censoredText = censoredText.replaceAll(geoRegex, "[censored]");
             
             System.out.println("\n--- Очищенный текст ---");
             System.out.println(censoredText);
